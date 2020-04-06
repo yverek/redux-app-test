@@ -1,11 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import {Container,Row} from 'react-bootstrap'
 import './App.css';
+import PeopleList from './app/components/people/PeopleList';
+import FilmsList from './app/components/films/FilmsList';
 
 function App() {
   return (
-    <div className="App">
+    <Container>
+      <Row>
+        <PeopleList/>
+      </Row>
+      <Row>
+        <FilmsList/>
+      </Row>
+    </Container>
+   
+  );
+}
+
+export default App;
+/**
+ * 
+ *  <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Counter />
@@ -52,7 +68,4 @@ function App() {
         </span>
       </header>
     </div>
-  );
-}
-
-export default App;
+ */
