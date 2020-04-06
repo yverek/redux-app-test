@@ -1,17 +1,36 @@
-import { filmsListSrv, peopleListSrv } from "./api/Api";
+import { FILMS, PEOPLE } from "./constants"
 
-export const GET_FILMS_LIST = 'GET_FILMS_LIST';
-export const GET_PEOPLE_LIST = 'GET_PEOPLE_LIST';
-export const RENDER_FILMS_LIST = 'RENDER_FILMS_LIST';
-export const RENDER_PEOPLE_LIST = 'RENDER_PEOPLE_LIST';
 
-export  function getFilms( ) {
-    return {
-        type: GET_FILMS_LIST
-    }
-}
-export function getPeople( ) {
-    return {
-        type: GET_PEOPLE_LIST
-    }
-}
+const getFilms = () =>( {
+    type: FILMS.LOAD
+})
+const setFilms = films => ({
+
+    type: FILMS.LOAD_SUCCESS,
+    films
+
+})
+const setErrorFilms = error => ({
+
+    type: FILMS.LOAD_FAIL,
+    error
+
+})
+const getPeople = () => ({
+    type: PEOPLE.LOAD
+})
+
+
+const setPeople = people => ({
+    type: PEOPLE.LOAD_SUCCESS,
+    people
+
+})
+
+const setErrorPeople = error => ({
+    type: PEOPLE.LOAD_FAIL,
+    error
+
+})
+
+export { setErrorFilms, setErrorPeople, setFilms, setPeople, getFilms, getPeople }

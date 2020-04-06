@@ -1,17 +1,13 @@
-import { createStore, applyMiddleware } from 'redux';
-import createSagaMiddleware from 'redux-saga';
-import "regenerator-runtime/runtime";
-import { rootSaga } from './saga';
-import starwarsApp from './reducers';
+import { createStore } from "@reduxjs/toolkit";
+import rootReducer from "./reducers/index";
 
-function* exampleSaga() {
-  console.log("Example saga reached");
+
+const configureStore = () => {
+  const store  =  createStore(
+    rootReducer,
+    // window.__REDUX_DEVTOOLS_EXTESIONS__ &&
+    // window.__REDUX_DEVTOOLS_EXTESIONS__()
+    )
+    return store;
 }
-
-const sagaMiddleware = createSagaMiddleware();
-
-const store = createStore(starwarsApp, applyMiddleware(sagaMiddleware));
-
-sagaMiddleware.run(rootSaga);
-
-export default store
+export default configureStore;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import {Container,Row} from 'react-bootstrap'
 import PeopleCard from './PeopleCard'
+import { connect } from 'react-redux'
 
 const PeopleList = () => {
 
@@ -18,5 +19,10 @@ const PeopleList = () => {
     )
 
 }
+const mapStateToProps= ({ isLoadingPeople,
+    people,
+    errorPeople})=>({ isLoadingPeople,
+        people,
+        errorPeople})
 
-export default PeopleList
+export default connect(mapStateToProps, null) (PeopleList)

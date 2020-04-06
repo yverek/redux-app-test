@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import store from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { filmsListSrv } from './app/api/Api';
-filmsListSrv(res=> console.log(res), err=> console.log(err))
+import configureStore from './app/store';
+
+const store = configureStore();
+console.log(store.getState())
+
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Fragment>
+      <App />
+    </Fragment>
+   
   </Provider>,
   document.getElementById('root')
 );

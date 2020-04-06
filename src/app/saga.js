@@ -5,8 +5,8 @@ import { peopleListSrv, filmsListSrv } from './api/Api';
 export function* fetchGetFilmsList() {
     console.log('sto facendo partire la chiamata per i film nella action');
     
-   let data = filmsListSrv(res=> res, err => err) 
-   yield put({type: RENDER_FILMS_LIST, films: data})
+    let data = filmsListSrv(res=> res, err => err) 
+    yield put({type: RENDER_FILMS_LIST, films: data})
     
 }
 export function* loadFilmsListSaga (){
