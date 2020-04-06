@@ -17,7 +17,7 @@ export const peopleListSrv = (fn, err) => {
       .catch(error => {
         console.log("err");
         console.log(error);
-        err(error);
+      //  err(error);
       });
 };
 
@@ -32,6 +32,6 @@ export const filmsListSrv = (fn, err) => {
       .catch(error => {
         console.log("err");
         console.log(error);
-        err(error);
+    //    err(error);
       });
 };
