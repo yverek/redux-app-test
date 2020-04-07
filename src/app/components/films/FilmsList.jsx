@@ -35,5 +35,9 @@ const mapStateToProps = ({
     films,
     errorFilms
 })
+// mapDispatchToProps = dispatch => ({
+//     loadFilms: dispatch(loadFilms)
+// })
+
 
 export default connect(mapStateToProps, null)(FilmsList)

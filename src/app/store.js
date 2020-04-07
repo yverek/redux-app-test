@@ -12,11 +12,11 @@ const sagaMiddleware = createSagaMiddleware();
 const configureStore = () => {
   const store = createStore(
     rootReducer,
-    compose(
-      applyMiddleware(sagaMiddleware),
-      composeWithDevTools())
+    composeWithDevTools(
+      applyMiddleware(sagaMiddleware)
     )
-  sagaMiddleware(rootSaga())
+  )
+  sagaMiddleware.run(rootSaga)
   store.dispatch({type: 'HELLO' })
 
 
