@@ -1,21 +1,19 @@
 import React from 'react';
-import { Container, Row } from 'react-bootstrap'
-import People from './components/People'
-import Films from './components/Films'
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import FactsListContainer from './containers/FactsListContainer'
 import './App.css';
 
 function App() {
   return (
-    <div>
-      <Container>
-        <Row>
-          <People />
-        </Row>
-        <Row>
-          <Films />
-        </Row>
-      </Container>
-    </div>
+    <Container>
+      <Row>
+        <Col xs={12}>
+          <FactsListContainer />
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

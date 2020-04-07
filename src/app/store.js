@@ -2,7 +2,8 @@ import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 
 import reducer from './reducers'
-import { swFilmSaga, swPeopleSaga } from './saga'
+import rootSaga from './saga'
+import loadFactsList from './actions'
 
 // create the saga middleware
 const sagaMiddleware = createSagaMiddleware()
@@ -14,6 +15,8 @@ const store = createStore(
 )
 
 // then run the saga
-sagaMiddleware.run(swFilmSaga, swPeopleSaga)
+sagaMiddleware.run(rootSaga)
+
+store.dispatch(loadFactsList())
 
 export default store

@@ -1,30 +1,27 @@
-import { call, put, takeEvery } from 'redux-saga/effects'
-import { getFilmsList, getPeopleList } from './api';
+import { all, call, put, takeEvery } from 'redux-saga/effects'
+import { LOAD_FACTS_LIST, RENDER_FACTS_LIST } from './actions'
 
-function* fetchFilmList(action) {
-    try {
-        const filmList = yield call(getFilmsList, action.payload.filmList)
-        yield put({ type: "FILMS_FETCH_SUCCEEDED", filmList: filmList })
-    } catch (e) {
-        yield put({ type: "FILMS_FETCH_FAILED", message: e.message })
-    }
+const axios = require('axios')
+
+async function fetchAPI(url) {
+    return await axios.get(url)
+        .then(response => response)
+        .catch(error => {
+            console.log(error)
+        })
 }
 
-function* fetchPeopleList(action) {
-    try {
-        const peopleList = yield call(getPeopleList, action.payload.peopleList)
-        yield put({ type: "PEOPLE_FETCH_SUCCEEDED", peopleList: peopleList })
-    } catch (e) {
-        yield put({ type: "PEOPLE_FETCH_FAILED", message: e.message })
-    }
+export function* fetchFactsList() {
+    const url = 'https://cat-fact.herokuapp.com/facts'
+    const response = yield call(fetchAPI, url)
+    
+    yield put({ type: RENDER_FACTS_LIST, factsList: response.data.all.slice(0, 20) });
 }
 
-function* swFilmSaga() {
-    yield takeEvery("FILMS_FETCH_REQUESTED", fetchFilmList)
+export function* loadFactsList() {
+    yield takeEvery(LOAD_FACTS_LIST, fetchFactsList);
 }
 
-function* swPeopleSaga() {
-    yield takeEvery("PEOPLE_FETCH_REQUESTED", fetchPeopleList)
+export default function* rootSaga() {
+    yield all([loadFactsList()]);
 }
-
-export { swFilmSaga, swPeopleSaga }
