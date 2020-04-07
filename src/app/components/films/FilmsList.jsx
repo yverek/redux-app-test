@@ -3,8 +3,14 @@ import ReactDOM from 'react-dom'
 import { Container, Row } from 'react-bootstrap'
 import FilmCard from './FilmCard'
 import { connect } from 'react-redux'
+import { setFilms } from '../../actions'
 
 const FilmsList = () => {
+    useEffect(()=>{
+        debugger
+        setFilms()
+
+    })
 
     return (
         <Container>

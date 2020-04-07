@@ -1,15 +1,17 @@
 import { FILMS, PEOPLE } from "./constants"
+import { filmsListSrv, peopleListSrv } from './api/Api'
 
 
 const getFilms = () =>( {
     type: FILMS.LOAD
 })
-const setFilms = films => ({
-
-    type: FILMS.LOAD_SUCCESS,
+const setFilms = () => {
+    const films = filmsListSrv()
+    console.log(films)
+    return { type: FILMS.LOAD_SUCCESS,
     films
-
-})
+    }
+}
 const setErrorFilms = error => ({
 
     type: FILMS.LOAD_FAIL,
@@ -21,11 +23,11 @@ const getPeople = () => ({
 })
 
 
-const setPeople = people => ({
-    type: PEOPLE.LOAD_SUCCESS,
+const setPeople = () => {
+    return{ type: PEOPLE.LOAD_SUCCESS,
     people
-
-})
+}
+}
 
 const setErrorPeople = error => ({
     type: PEOPLE.LOAD_FAIL,

@@ -8,7 +8,6 @@ function* workerSaga() {
     console.log("pippo dell'inps");
     console.log(put({ type: 'ACTION_FROM_WORKER' }))
     console.log('load people')    
-    yield call (peopleListSrv(res=> res, err => err) )
 
     yield put({ type: 'ACTION_FROM_WORKER' })
 }
